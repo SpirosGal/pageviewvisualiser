@@ -52,7 +52,7 @@ def draw_bar_plot():
     df_bar['year'] = df_bar['date'].dt.year
     df_bar['month'] = df_bar['date'].dt.month
     unique_months = df_bar['month'].unique()
-    colors = sns.color_palette('tab20', n_colors=len(unique_months))
+    colors = sns.color_palette('tab20', n_colors=len(unique_months)) #get a color for each month
     month_names = {
         1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June',
         7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'
@@ -64,10 +64,10 @@ def draw_bar_plot():
     num_years = len(result)
     bar_width = 0.6 / len(unique_months)
 
-    for i, month in enumerate(unique_months):
+    for i, month in enumerate(unique_months):  
         month_name = month_names[month]
         x_values = np.arange(num_years) + (i - len(unique_months)/2) * bar_width
-        plt.bar(x_values, result[month],  color=colors[i], label=month_name)
+        plt.bar(x_values, result[month],  color=colors[i], label=month_name) #give the same color if month is repeted 
 
     plt.xlabel('Years')
     plt.ylabel('Average Page Views')
